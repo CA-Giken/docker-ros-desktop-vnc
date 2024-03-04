@@ -39,18 +39,22 @@ docker rmi hello-world
 
 # 起動とコンテナ内作業
 ## ROS Noetic
+1. 以下を実行して環境・リモートデスクトップ立ち上げ
 ```
 docker run -p 6080:80 --shm-size=512m tiryoh/ros-desktop-vnc:noetic
 docker ps -a
 docker exec -it [CONTAINER_ID] bash
 ```
-
+2. `localhost:6080`をブラウザで起動
+   
 ## ROS Kinetic
+1. 以下を実行して環境・リモートデスクトップ立ち上げ
 ```
 docker run -p 6080:80 --shm-size=512m tiryoh/ros-desktop-vnc:kinetic
 docker ps -a
 docker exec -it [CONTAINER_ID] bash
 ```
+2. `localhost:6080`をブラウザで起動
 
 # TODO:
 - `docker-compose`で簡単に起動できるように
