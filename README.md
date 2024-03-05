@@ -41,9 +41,8 @@ docker rmi hello-world
 ## ROS Noetic
 1. 以下を実行して環境・リモートデスクトップ立ち上げ
 ```
-docker run -p 6080:80 --shm-size=512m tiryoh/ros-desktop-vnc:noetic
-docker ps -a
-docker exec -it [CONTAINER_ID] bash
+cd /path/to/this-repository
+docker-compose up -d
 ```
 2. `localhost:6080`をブラウザで起動
    
@@ -56,6 +55,3 @@ docker exec -it [CONTAINER_ID] bash
 ```
 2. `localhost:6080`をブラウザで起動
 
-# TODO:
-- `docker-compose`で簡単に起動できるように
-- ボリュームのマウントを行って作業しやすくする

@@ -17,6 +17,8 @@ ls /etc/ros/rosdep/sources.list.d/20-default.list > /dev/null 2>&1 && sudo rm /e
 sudo rosdep init 
 rosdep update
 
+mkdir -p ~/catkin_ws/src
+
 sudo apt-get install -y python3-rosinstall python3-rosinstall-generator python3-wstool build-essential python3-vcstool
 sudo apt-get install -y python3-catkin-tools python3-osrf-pycommon
 

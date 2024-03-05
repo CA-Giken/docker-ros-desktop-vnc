@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  rosnoetic:
+    build:
+      context: ./noetic
+      dockerfile: ./Dockerfile
+    hostname: rosnoetic
+    volumes:
+      - ~/catkin_ws:/root/catkin_ws
+    tty: true
+    ports:
+      - 6080:80
+    environment:
+      - RESOLUTION=1920x1080
+    shm_size: '4gb'
+    working_dir: /root/catkin_ws
