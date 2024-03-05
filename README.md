@@ -39,13 +39,50 @@ docker rmi hello-world
 
 # 起動とコンテナ内作業
 ## ROS Noetic
+### 起動
 1. 以下を実行して環境・リモートデスクトップ立ち上げ
 ```
 cd /path/to/this-repository
 docker-compose up -d
 ```
 2. `localhost:6080`をブラウザで起動
-   
+3. ブラウザのウィンドウヘッダーを右クリック -> 全画面化
+4. 全画面化を解除する場合は`F11`
+
+### コンテナ外から操作
+- ブラウザ内での操作ではなく、ホストPCからCLI操作をしたい場合
+```
+cd /path/to/this-repository
+docker-compose exec rosnoetic bash
+```
+これでコンテナ内のシェルが新しく立ち上がる。
+
+- ホストPCのファイルを渡したい
+```
+cd ~/catkin_ws
+cp /path/to/anyfile ./
+```
+もしくはファイルブラウザで直接`~/catkin_ws`を開いても渡せる
+※ただしファイル権限で怒られる可能性あり。コンテナ内で作成したファイルは全てroot権限になります。
+
+### 設定の変更
+- 解像度の変更
+`docker-compose.yml`の
+```
+environments:
+  - RESOLUTION=1920x1080
+```
+を変更。消すとブラウザ接続時のウィンドウサイズになるかも？
+
+- ポート追加・変更
+`docker-compose`の
+```
+ports:
+  - 6080:80
+  - [newHostport]:[newContainerPort]
+```
+左側に、ホストからコンテナ内にアクセスするときのポートを書く。
+
 ## ROS Kinetic
 1. 以下を実行して環境・リモートデスクトップ立ち上げ
 ```
@@ -54,4 +91,5 @@ docker ps -a
 docker exec -it [CONTAINER_ID] bash
 ```
 2. `localhost:6080`をブラウザで起動
+
 
