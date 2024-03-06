@@ -92,4 +92,14 @@ docker exec -it [CONTAINER_ID] bash
 ```
 2. `localhost:6080`をブラウザで起動
 
+# トラブルシューティング
+## failed to start daemon: devices cgroup isn't mounted
+`MX Linux 23 AHS`にて、Dockerサービスが立ち上がらない問題に直面。
 
+[https://stackoverflow.com/questions/32002882/error-starting-docker-daemon-on-ubuntu-14-04-devices-cgroup-isnt-mounted]
+ここ見てgrubファイルに書き込んで、
+
+[https://stackoverflow.com/questions/60272981/docker-failed-to-start-daemon-devices-cgroup-isnt-mounted-debian-gnu-linux-9]
+`cgroupfs-mount`パッケージを入れたら治った。
+
+対応後は、再起動して`sudo service docker start`で起動。
